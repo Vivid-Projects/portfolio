@@ -5,11 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="BI Developer and Data Engineer portfolio showcasing business intelligence dashboards and data pipelines.">
   <meta name="keywords" content="business intelligence, data engineering, portfolio, dashboards, ETL">
-<<<<<<< HEAD
   <title>Vivid's Portfolio</title>
-=======
-  <title>BI & Data Engineering Portfolio 📈</title>
->>>>>>> parent of 1d7a40f (main changes)
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
@@ -40,7 +36,6 @@
       padding: 1rem 0; margin: 1rem 0;
     }
     .nav-link:hover { transform: translateY(-2px); transition: transform 0.2s ease; }
-    .word { display: inline-block; white-space: pre; }
     .navbar-shadow { box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); }
     .hamburger {
       z-index: 100; user-select: none; -webkit-tap-highlight-color: transparent;
@@ -74,7 +69,6 @@
       .hamburger { display: block; cursor: pointer; }
       .project-img { height: 12rem; }
       .section-divider { padding: 0.5rem 0; }
-      .word { margin-right: 0.2rem; }
     }
     @media (min-width: 641px) {
       .hamburger, .nav-overlay { display: none; }
@@ -86,15 +80,15 @@
   </style>
 </head>
 <body class="font-sans bg-gray-800 text-white fade-in">
-</head>
-<body class="font-sans bg-gray-800 text-white">
   <!-- Navigation -->
   <nav class="fixed top-0 w-full bg-gray-800 bg-opacity-95 p-4 shadow-lg z-10">
     <div class="container mx-auto flex justify-between items-center">
       <h1 class="text-2xl sm:text-3xl font-extrabold text-blue-400">Vivid's Portfolio 📈</h1>
       <div class="hamburger">
         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+          <path class="line1" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16" />
+          <path class="line2" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 12h16" />
+          <path class="line3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 18h7" />
         </svg>
       </div>
       <div class="nav-links flex space-x-2 sm:space-x-6">
@@ -103,16 +97,16 @@
         <a href="blog.html" class="text-base sm:text-lg hover:text-pink-400 transition nav-link">Blog 📝</a>
         <a href="contact.html" class="text-base sm:text-lg hover:text-pink-400 transition nav-link">Contact 📧</a>
       </div>
+      <div class="nav-overlay"></div>
     </div>
   </nav>
-
 
   <!-- Hero Section -->
   <section class="min-h-screen flex items-center bg-gray-800 bg-section section-divider hero-section" style="background-image: url('https://images.unsplash.com/photo-1551288049-b1f3a0c3f055?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');">
     <div class="section-overlay"></div>
     <div class="container mx-auto px-4 sm:px-6 text-center relative z-10">
-      <h1 class="text-3xl sm:text-5xl md:text-7xl font-extrabold text-blue-400 mb-6 animate-hero-title">Vivid's Portfolio 🌟</h1>
-      <p class="text-base sm:text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto mb-10 animate-hero-content">
+      <h1 class="text-3xl sm:text-5xl md:text-7xl font-extrabold text-blue-400 mb-6">Vivid's Portfolio 🌟</h1>
+      <p class="text-base sm:text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto mb-10">
         Transforming data into insights with stunning BI dashboards and robust pipelines. Dive into my work! 🚀
       </p>
       <a href="projects.html" class="gradient-btn text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold transition glow text-base sm:text-xl" aria-label="Explore projects">Explore My Work 📊</a>
@@ -123,23 +117,23 @@
   <section class="py-12 sm:py-24 bg-gray-800 section-divider about-section">
     <div class="section-overlay"></div>
     <div class="container mx-auto px-4 sm:px-6 relative z-10">
-      <h2 class="text-3xl sm:text-5xl font-extrabold text-center mb-10 text-blue-400 animate-section-title">About Me 🌟</h2>
-      <p class="text-base sm:text-xl text-gray-200 max-w-3xl mx-auto text-center mb-10 animate-section-content">
+      <h2 class="text-3xl sm:text-5xl font-extrabold text-center mb-10 text-blue-400">About Me 🌟</h2>
+      <p class="text-base sm:text-xl text-gray-200 max-w-3xl mx-auto text-center mb-10">
         I'm a BI Developer and Data Engineer passionate about crafting interactive dashboards with Tableau and Power BI, and building scalable ETL pipelines with Spark and Python.
       </p>
-      <div class="flex justify-center space-x-4 sm:space-x-6 flex-wrap animate-section-content">
-        <span class="bg-blue-400 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full glow animate-skill text-base sm:text-lg">Tableau 📊</span>
-        <span class="bg-blue-400 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full glow animate-skill text-base sm:text-lg">Power BI 📈</span>
-        <span class="bg-blue-400 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full glow animate-skill text-base sm:text-lg">Spark 🔥</span>
-        <span class="bg-blue-400 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full glow animate-skill text-base sm:text-lg">Python 🐍</span>
-        <span class="bg-blue-400 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full glow animate-skill text-base sm:text-lg">SQL 🗃️</span>
+      <div class="flex justify-center space-x-4 sm:space-x-6 flex-wrap">
+        <span class="bg-blue-400 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full glow text-base sm:text-lg">Tableau 📊</span>
+        <span class="bg-blue-400 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full glow text-base sm:text-lg">Power BI 📈</span>
+        <span class="bg-blue-400 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full glow text-base sm:text-lg">Spark 🔥</span>
+        <span class="bg-blue-400 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full glow text-base sm:text-lg">Python 🐍</span>
+        <span class="bg-blue-400 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full glow text-base sm:text-lg">SQL 🗃️</span>
       </div>
-      <div class="mt-10 text-center animate-section-content">
+      <div class="mt-10 text-center">
         <h3 class="text-2xl sm:text-3xl font-semibold text-blue-400 mb-6">Certifications 🎓</h3>
         <div class="flex justify-center space-x-4 sm:space-x-6 flex-wrap">
-          <span class="bg-blue-400 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full glow animate-cert text-base sm:text-lg">Microsoft Fabric DP-700 🏅</span>
-          <span class="bg-blue-400 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full glow animate-cert text-base sm:text-lg">Microsoft Power BI PL-300 🏅</span>
-          <span class="bg-blue-400 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full glow animate-cert text-base sm:text-lg">Google Analytics 📊</span>
+          <span class="bg-blue-400 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full glow text-base sm:text-lg">Microsoft Fabric DP-700 🏅</span>
+          <span class="bg-blue-400 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full glow text-base sm:text-lg">Microsoft Power BI PL-300 🏅</span>
+          <span class="bg-blue-400 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full glow text-base sm:text-lg">Google Analytics 📊</span>
         </div>
       </div>
     </div>
@@ -149,15 +143,15 @@
   <section class="py-12 sm:py-24 bg-gray-800 section-divider projects-section">
     <div class="section-overlay"></div>
     <div class="container mx-auto px-4 sm:px-6 relative z-10">
-      <h2 class="text-3xl sm:text-5xl font-extrabold text-center mb-10 text-blue-400 animate-section-title">Featured Projects 📊</h2>
+      <h2 class="text-3xl sm:text-5xl font-extrabold text-center mb-10 text-blue-400">Featured Projects 📊</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-10">
-        <div class="bg-gray-800 p-6 sm:p-8 rounded-xl shadow-lg hover:shadow-xl transition glow animate-project-card">
+        <div class="bg-gray-800 p-6 sm:p-8 rounded-xl shadow-lg hover:shadow-xl transition glow">
           <img src="https://images.unsplash.com/photo-1614027164847-1b28cfe1df60?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Sales Performance Dashboard" class="w-full h-48 sm:h-64 object-cover rounded-lg mb-6 project-img">
           <h3 class="text-2xl sm:text-3xl font-semibold mb-3 text-white">Sales Performance Dashboard 📊</h3>
           <p class="text-base sm:text-lg text-gray-200 mb-6">A Tableau dashboard visualizing sales KPIs with real-time insights.</p>
           <a href="https://github.com/Vivid-Projects/sales-dashboard" class="gradient-btn text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full transition glow text-base sm:text-lg" aria-label="View Sales Dashboard on GitHub">View on GitHub 🚀</a>
         </div>
-        <div class="bg-gray-800 p-6 sm:p-8 rounded-xl shadow-lg hover:shadow-xl transition glow animate-project-card">
+        <div class="bg-gray-800 p-6 sm:p-8 rounded-xl shadow-lg hover:shadow-xl transition glow">
           <img src="https://images.unsplash.com/photo-1614027164847-1b28cfe1df60?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="ETL Data Pipeline" class="w-full h-48 sm:h-64 object-cover rounded-lg mb-6 project-img">
           <h3 class="text-2xl sm:text-3xl font-semibold mb-3 text-white">ETL Data Pipeline 🛠️</h3>
           <p class="text-base sm:text-lg text-gray-200 mb-6">A Snowflake-based pipeline for processing large-scale datasets.</p>
@@ -174,8 +168,8 @@
   <section class="py-12 sm:py-24 bg-gray-800 section-divider contact-section">
     <div class="section-overlay"></div>
     <div class="container mx-auto px-4 sm:px-6 text-center relative z-10">
-      <h2 class="text-3xl sm:text-5xl font-extrabold text-center mb-10 text-blue-400 animate-section-title">Let's Connect 📧</h2>
-      <p class="text-base sm:text-xl text-gray-200 max-w-3xl mx-auto mb-10 animate-section-content">
+      <h2 class="text-3xl sm:text-5xl font-extrabold text-center mb-10 text-blue-400">Let's Connect 📧</h2>
+      <p class="text-base sm:text-xl text-gray-200 max-w-3xl mx-auto mb-10">
         Interested in collaborating? Reach out via the form or email me at <a href="mailto:iborivivid5@gmail.com" class="text-pink-400 hover:underline">iborivivid5@gmail.com</a> 🌟
       </p>
       <a href="contact.html" class="gradient-btn text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold transition glow text-base sm:text-xl" aria-label="Go to contact form">Contact Form 📝</a>
@@ -193,44 +187,9 @@
     </div>
   </footer>
 
-  <!-- GSAP Scripts -->
-  <script defer src="https://unpkg.com/gsap@3.12.5/dist/gsap.min.js" integrity="sha512-7eHRwcbYkK4bAYsx7h56a4l+ReUJYM/8SrTowy3t/hXInX88vH2W4E6H2uL6sC+2H4HM5dYdNHb3BADtCrAYgZw==" crossorigin="anonymous"></script>
-  <script defer src="https://unpkg.com/gsap@3.12.5/dist/ScrollTrigger.min.js" integrity="sha512-on2nB4S2V8xW3R0uMGaUOC9e0CGA+0uLMQ80niqYu3V8l0W2qs2cT769r8g9uG0eQ0vIJLG1G3YLT2O5xpSp+6Q==" crossorigin="anonymous"></script>
-  <script defer src="https://unpkg.com/gsap@3.12.5/dist/TextPlugin.min.js" integrity="sha512-RzLkvX2bMI3U3S3+1oy4RLjFR0rR2lU6z8NFd+RHK0uEdlTIV3RT2kI+EdcG4N0TZgUr2aF88zG7qYvW4XzJMDQ==" crossorigin="anonymous"></script>
-
-  <!-- JavaScript for Animations and Sidebar -->
+  <!-- JavaScript for Sidebar and Page Transitions -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // GSAP Fallback Loader with Retry
-      function loadGSAPWithRetry(attempts = 1) {
-        if (!window.gsap || !window.ScrollTrigger || !window.TextPlugin) {
-          console.warn('GSAP or plugins not loaded from CDN, attempting local fallback', {
-            gsap: !!window.gsap,
-            ScrollTrigger: !!window.ScrollTrigger,
-            TextPlugin: !!window.TextPlugin,
-            attempt: attempts
-          });
-          const scripts = [
-            { id: 'gsap', src: 'js/gsap.min.js', loaded: !!window.gsap },
-            { id: 'ScrollTrigger', src: 'js/ScrollTrigger.min.js', loaded: !!window.ScrollTrigger },
-            { id: 'TextPlugin', src: 'js/TextPlugin.min.js', loaded: !!window.TextPlugin }
-          ];
-          scripts.forEach(script => {
-            if (!script.loaded) {
-              const el = document.createElement('script');
-              el.src = script.src;
-              document.body.appendChild(el);
-            }
-          });
-          if (attempts > 0) {
-            setTimeout(() => loadGSAPWithRetry(attempts - 1), 1000);
-          }
-        } else {
-          console.log('GSAP loaded:', { gsap: !!window.gsap, ScrollTrigger: !!window.ScrollTrigger, TextPlugin: !!window.TextPlugin });
-        }
-      }
-      loadGSAPWithRetry();
-
       // Sidebar Menu Setup
       function setupHamburger() {
         const hamburger = document.querySelector('.hamburger');
@@ -246,237 +205,31 @@
             const isActive = navLinks.classList.toggle('active');
             navOverlay.classList.toggle('active');
             hamburger.classList.toggle('active');
-            hamburger.setAttribute('aria-expanded', isActive);
-            if (window.gsap) {
-              gsap.to(navLinks, { x: isActive ? 0 : '100%', duration: 0.3, ease: 'power2.out' });
-              gsap.to(navOverlay, { opacity: isActive ? 1 : 0, duration: 0.3, ease: 'power2.out' });
-              gsap.to(line1, { attr: { d: isActive ? 'M6 6L18 18' : 'M4 6h16' }, duration: 0.3 });
-              gsap.to(line2, { opacity: isActive ? 0 : 1, duration: 0.3 });
-              gsap.to(line3, { attr: { d: isActive ? 'M6 18L18 6' : 'M4 18h7' }, duration: 0.3 });
-            } else {
-              line1.classList.toggle('active');
-              line2.classList.toggle('active');
-              line3.classList.toggle('active');
-            }
+            line1.classList.toggle('active');
+            line2.classList.toggle('active');
+            line3.classList.toggle('active');
           } else {
             console.warn('Nav links, overlay, or SVG lines not found');
           }
         }
         if (hamburger && navLinks && navOverlay) {
-          hamburger.addEventListener('pointerdown', toggleNav);
           hamburger.addEventListener('click', toggleNav);
-          hamburger.addEventListener('touchstart', e => { e.preventDefault(); toggleNav(e); });
-          navOverlay.addEventListener('pointerdown', toggleNav);
           navOverlay.addEventListener('click', toggleNav);
-          navOverlay.addEventListener('touchstart', e => { e.preventDefault(); toggleNav(e); });
         } else {
           console.warn('Hamburger, nav-links, or nav-overlay not found');
         }
       }
       setupHamburger();
 
-      // GSAP Animations
-      if (window.gsap && window.ScrollTrigger && window.TextPlugin) {
-        gsap.registerPlugin(ScrollTrigger, TextPlugin);
-
-        // Page Load Fade-In
-        gsap.from('body', { opacity: 0, duration: 0.4, ease: 'power2.in' });
-
-        // Function to split text into words and wrap in spans
-        function splitTextToWords(element) {
-          if (!element) {
-            console.warn('Element not found for splitTextToWords');
-            return [];
-          }
-          const text = element.textContent;
-          const words = text.split(/\s+/).filter(word => word.length > 0);
-          element.innerHTML = words.map(word => `<span class="word">${word}</span>`).join(' ');
-          return element.querySelectorAll('.word');
-        }
-
-        // Hero Section Animations
-        const heroTitle = document.querySelector('.hero-section .animate-hero-title');
-        const heroContent = document.querySelector('.hero-section .animate-hero-content');
-        const isMobile = window.innerWidth <= 640;
-
-        if (heroTitle) {
-          gsap.from(heroTitle, { opacity: 0, y: 50, duration: 0.5, ease: "power3.out" });
-          const heroTitleWords = splitTextToWords(heroTitle);
-          gsap.from(heroTitleWords, {
-            opacity: 0,
-            y: 20,
-            duration: isMobile ? 0.15 : 0.3,
-            stagger: isMobile ? 0.015 : 0.06,
-            ease: "power2.out",
-            delay: 0.2
-          });
-        } else {
-          console.warn('Hero title not found');
-        }
-
-        if (heroContent) {
-          gsap.from(heroContent, { opacity: 0, y: 30, duration: 0.5, delay: 0.2, ease: "power3.out" });
-          const heroContentWords = splitTextToWords(heroContent);
-          gsap.from(heroContentWords, {
-            opacity: 0,
-            y: 30,
-            duration: isMobile ? 0.1 : 0.25,
-            stagger: isMobile ? 0.015 : 0.05,
-            ease: "power2.out",
-            delay: 0.4
-          });
-        } else {
-          console.warn('Hero content not found');
-        }
-
-        // About Section Animations
-        const aboutTitle = document.querySelector('.about-section .animate-section-title');
-        const aboutContent = document.querySelector('.about-section .animate-section-content p');
-        if (aboutTitle) {
-          gsap.from(aboutTitle, {
-            scrollTrigger: { trigger: aboutTitle, start: "top 80%" },
-            x: -50, opacity: 0, duration: 0.5, ease: "power3.out"
-          });
-        } else {
-          console.warn('About title not found');
-        }
-        if (aboutContent) {
-          const aboutContentWords = splitTextToWords(aboutContent);
-          gsap.from(aboutContentWords, {
-            scrollTrigger: { trigger: aboutContent, start: "top 80%" },
-            opacity: 0,
-            x: -20,
-            duration: isMobile ? 0.1 : 0.2,
-            stagger: isMobile ? 0.015 : 0.03,
-            ease: "power2.out"
-          });
-        } else {
-          console.warn('About content not found');
-        }
-
-        gsap.utils.toArray(".animate-skill, .animate-cert").forEach((element, index) => {
-          gsap.from(element, {
-            scrollTrigger: { trigger: element, start: "top 80%" },
-            opacity: 0,
-            x: -30,
-            duration: isMobile ? 0.15 : 0.25,
-            delay: index * (isMobile ? 0.02 : 0.06),
-            ease: "power3.out"
-          });
+      // Page Transitions (Fade Out Fallback)
+      document.querySelectorAll('a[href^="projects.html"], a[href^="blog.html"], a[href^="contact.html"]').forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const href = link.getAttribute('href');
+          document.body.style.opacity = '0';
+          setTimeout(() => { window.location.href = href; }, 400);
         });
-
-        // Projects Section Animations
-        gsap.utils.toArray(".projects-section .animate-project-card").forEach((card, index) => {
-          gsap.from(card, {
-            scrollTrigger: { trigger: card, start: "top 80%" },
-            opacity: 0,
-            y: 20,
-            duration: 0.5,
-            delay: index * 0.1,
-            ease: "power3.out"
-          });
-          const projectTitle = card.querySelector('h3');
-          const projectDesc = card.querySelector('p');
-          if (projectTitle) {
-            const projectTitleWords = splitTextToWords(projectTitle);
-            gsap.from(projectTitleWords, {
-              scrollTrigger: { trigger: card, start: "top 80%" },
-              opacity: 0,
-              scale: 0.8,
-              duration: isMobile ? 0.1 : 0.25,
-              stagger: isMobile ? 0.015 : 0.03,
-              ease: "power2.out",
-              delay: index * 0.1 + 0.2
-            });
-          } else {
-            console.warn('Project title not found in card', card);
-          }
-          if (projectDesc) {
-            const projectDescWords = splitTextToWords(projectDesc);
-            gsap.from(projectDescWords, {
-              scrollTrigger: { trigger: card, start: "top 80%" },
-              opacity: 0,
-              duration: isMobile ? 0.08 : 0.15,
-              stagger: isMobile ? 0.01 : 0.02,
-              ease: "power2.out",
-              delay: index * 0.1 + 0.3
-            });
-          } else {
-            console.warn('Project description not found in card', card);
-          }
-        });
-
-        // Contact Section Animations
-        const contactTitle = document.querySelector('.contact-section .animate-section-title');
-        const contactContent = document.querySelector('.contact-section .animate-section-content p');
-        if (contactTitle) {
-          const contactTitleWords = splitTextToWords(contactTitle);
-          gsap.from(contactTitleWords, {
-            scrollTrigger: { trigger: contactTitle, start: "top 80%" },
-            opacity: 0,
-            y: -20,
-            duration: isMobile ? 0.15 : 0.3,
-            stagger: isMobile ? 0.02 : 0.06,
-            ease: isMobile ? "power2.out" : "bounce.out"
-          });
-        } else {
-          console.warn('Contact title not found');
-        }
-        if (contactContent) {
-          const contactContentWords = splitTextToWords(contactContent);
-          gsap.from(contactContentWords, {
-            scrollTrigger: { trigger: contactContent, start: "top 80%" },
-            opacity: 0,
-            duration: isMobile ? 0.1 : 0.25,
-            stagger: isMobile ? 0.015 : 0.05,
-            ease: "power2.out",
-            delay: 0.2
-          });
-        } else {
-          console.warn('Contact content not found');
-        }
-
-        // Footer Animations
-        gsap.utils.toArray('.footer-link').forEach((link, index) => {
-          gsap.from(link, {
-            scrollTrigger: { trigger: link, start: "top 90%" },
-            opacity: 0,
-            y: 20,
-            duration: 0.3,
-            delay: index * 0.08,
-            ease: "power3.out"
-          });
-        });
-
-        // Page Transitions (Fade Out)
-        document.querySelectorAll('a[href^="projects.html"], a[href^="blog.html"], a[href^="contact.html"]').forEach(link => {
-          link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const href = link.getAttribute('href');
-            gsap.to('body', {
-              opacity: 0,
-              duration: 0.4,
-              ease: 'power2.out',
-              onComplete: () => { window.location.href = href; }
-            });
-          });
-        });
-      } else {
-        console.warn('GSAP or plugins not loaded, skipping animations', {
-          gsap: !!window.gsap,
-          ScrollTrigger: !!window.ScrollTrigger,
-          TextPlugin: !!window.TextPlugin
-        });
-        // Page Transitions (Fade Out Fallback)
-        document.querySelectorAll('a[href^="projects.html"], a[href^="blog.html"], a[href^="contact.html"]').forEach(link => {
-          link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const href = link.getAttribute('href');
-            document.body.style.opacity = '0';
-            setTimeout(() => { window.location.href = href; }, 400);
-          });
-        });
-      }
+      });
     });
   </script>
 </body>
