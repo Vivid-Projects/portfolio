@@ -86,15 +86,15 @@
   </style>
 </head>
 <body class="font-sans bg-gray-800 text-white fade-in">
+</head>
+<body class="font-sans bg-gray-800 text-white">
   <!-- Navigation -->
-  <nav class="fixed top-0 w-full bg-gray-800 bg-opacity-95 p-4 navbar-shadow z-10">
+  <nav class="fixed top-0 w-full bg-gray-800 bg-opacity-95 p-4 shadow-lg z-10">
     <div class="container mx-auto flex justify-between items-center">
       <h1 class="text-2xl sm:text-3xl font-extrabold text-blue-400">Vivid's Portfolio 📈</h1>
-      <div class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
-        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path class="line1" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16" />
-          <path class="line2" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 12h16" />
-          <path class="line3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 18h7" />
+      <div class="hamburger">
+        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
         </svg>
       </div>
       <div class="nav-links flex space-x-2 sm:space-x-6">
@@ -103,9 +103,9 @@
         <a href="blog.html" class="text-base sm:text-lg hover:text-pink-400 transition nav-link">Blog 📝</a>
         <a href="contact.html" class="text-base sm:text-lg hover:text-pink-400 transition nav-link">Contact 📧</a>
       </div>
-      <div class="nav-overlay"></div>
     </div>
   </nav>
+
 
   <!-- Hero Section -->
   <section class="min-h-screen flex items-center bg-gray-800 bg-section section-divider hero-section" style="background-image: url('https://images.unsplash.com/photo-1551288049-b1f3a0c3f055?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');">
