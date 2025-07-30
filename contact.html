@@ -6,43 +6,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Contact form for BI Developer and Data Engineer portfolio.">
   <meta name="keywords" content="business intelligence, data engineering, contact">
-  <title>Contact 📧</title>
+  <title>Vivid's Portfolio</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <style>
-    .glow:hover {
-      box-shadow: 0 0 20px rgba(59, 130, 246, 0.8);
-    }
-    .gradient-btn {
-      background: linear-gradient(to right, #2563eb, #f472b6);
-    }
-    .parallax {
-      background-attachment: fixed;
-      background-position: center;
-      background-size: cover;
-      position: relative;
-    }
-    .gradient-btn:hover {
-      animation: pulse 1.5s infinite;
-    }
+    body { overflow-x: hidden; }
+    .glow:hover { box-shadow: 0 0 20px rgba(59, 130, 246, 0.8); }
+    .gradient-btn { background: linear-gradient(to right, #2563eb, #f472b6); }
+    .bg-section { background-position: center; background-size: cover; position: relative; }
+    .gradient-btn:hover { animation: pulse 1.5s infinite; }
     @keyframes pulse {
       0% { transform: scale(1); }
       50% { transform: scale(1.05); }
       100% { transform: scale(1); }
     }
-    .input-glow:focus {
-      box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
-      border-color: #2563eb;
-    }
+    .input-glow:focus { box-shadow: 0 0 10px rgba(59, 130, 246, 0.5); border-color: #2563eb; }
     .section-divider {
       background: linear-gradient(to bottom, rgba(37, 99, 235, 0.1), rgba(244, 114, 182, 0.1));
-      padding: 2rem 0;
-      margin: 2rem 0;
+      padding: 1rem 0; margin: 1rem 0;
     }
-    .nav-link:hover {
-      transform: translateY(-2px);
-      transition: transform 0.2s ease;
+    .nav-link:hover { transform: translateY(-2px); transition: transform 0.2s ease; }
+    @media (max-width: 640px) {
+      h2 { font-size: 2rem; }
+      p, a, input, textarea, button { font-size: 1rem; }
+      .nav-links { display: none; }
+      .nav-links.active { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: #1E293B; padding: 1rem; }
+      .hamburger { display: block; cursor: pointer; }
+      .section-divider { padding: 0.5rem 0; }
+      .contact-form { max-width: 100%; }
+    }
+    @media (min-width: 641px) {
+      .hamburger { display: none; }
+      .nav-links { display: flex !important; }
     }
   </style>
 </head>
@@ -50,34 +46,39 @@
   <!-- Navigation -->
   <nav class="fixed top-0 w-full bg-gray-800 bg-opacity-95 p-4 shadow-lg z-10">
     <div class="container mx-auto flex justify-between items-center">
-      <h1 class="text-3xl font-extrabold text-blue-400">Vivid's Portfolio 📈</h1>
-      <div class="space-x-6">
-        <a href="index.html" class="text-lg hover:text-pink-400 transition nav-link">Home 🏠</a>
-        <a href="projects.html" class="text-lg hover:text-pink-400 transition nav-link">Projects 📊</a>
-        <a href="blog.html" class="text-lg hover:text-pink-400 transition nav-link">Blog 📝</a>
-        <a href="contact.html" class="text-lg hover:text-pink-400 transition nav-link">Contact 📧</a>
+      <h1 class="text-2xl sm:text-3xl font-extrabold text-blue-400">Vivid's Portfolio 📈</h1>
+      <div class="hamburger">
+        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+        </svg>
+      </div>
+      <div class="nav-links flex space-x-2 sm:space-x-6">
+        <a href="index.html" class="text-base sm:text-lg hover:text-pink-400 transition nav-link">Home 🏠</a>
+        <a href="projects.html" class="text-base sm:text-lg hover:text-pink-400 transition nav-link">Projects 📊</a>
+        <a href="blog.html" class="text-base sm:text-lg hover:text-pink-400 transition nav-link">Blog 📝</a>
+        <a href="contact.html" class="text-base sm:text-lg hover:text-pink-400 transition nav-link">Contact 📧</a>
       </div>
     </div>
   </nav>
 
   <!-- Contact Section -->
-  <section class="py-32 bg-gray-800 parallax section-divider" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');">
-    <div class="container mx-auto px-4">
-      <h2 class="text-5xl md:text-6xl font-extrabold text-center mb-12 text-blue-400 animate-section-title">Get in Touch 📧</h2>
-      <p class="text-xl text-gray-200 max-w-3xl mx-auto text-center mb-10 animate-section-content">
+  <section class="py-16 sm:py-32 bg-gray-800 bg-section section-divider" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');">
+    <div class="container mx-auto px-4 sm:px-6">
+      <h2 class="text-3xl sm:text-5xl font-extrabold text-center mb-10 text-blue-400 animate-section-title">Get in Touch 📧</h2>
+      <p class="text-base sm:text-xl text-gray-200 max-w-3xl mx-auto text-center mb-10 animate-section-content">
         Excited to collaborate? Fill out the form below or email me at <a href="mailto:iborivivid5@gmail.com" class="text-pink-400 hover:underline">iborivivid5@gmail.com</a> 🌟
       </p>
-      <form action="https://formspree.io/f/xzzvvzew" method="POST" class="max-w-lg mx-auto bg-gray-800 p-8 rounded-xl shadow-lg glow animate-section-content">
+      <form action="https://formspree.io/f/xzzvvzew" method="POST" class="contact-form max-w-lg mx-auto bg-gray-800 p-6 sm:p-8 rounded-xl shadow-lg glow animate-section-content">
         <input type="hidden" name="_next" value="https://vivid-projects.github.io/portfolio-website/contact.html">
         <div class="space-y-6">
-          <input type="text" name="name" placeholder="Your Name 😊" class="w-full p-4 bg-gray-900 text-white rounded-lg border border-gray-600 focus:outline-none input-glow animate-input text-lg" required>
-          <input type="email" name="email" placeholder="Your Email 📧" class="w-full p-4 bg-gray-900 text-white rounded-lg border border-gray-600 focus:outline-none input-glow animate-input text-lg" required>
-          <textarea name="message" placeholder="Your Message ✍️" class="w-full p-4 bg-gray-900 text-white rounded-lg border border-gray-600 focus:outline-none input-glow animate-input text-lg" rows="5" required></textarea>
-          <button type="submit" class="gradient-btn text-white px-8 py-4 rounded-full w-full hover:scale-105 transition glow text-xl" aria-label="Send message">Send Message 🚀</button>
+          <input type="text" name="name" placeholder="Your Name 😊" class="w-full p-5 bg-gray-900 text-white rounded-lg border border-gray-600 focus:outline-none input-glow animate-input text-base" required>
+          <input type="email" name="email" placeholder="Your Email 📧" class="w-full p-5 bg-gray-900 text-white rounded-lg border border-gray-600 focus:outline-none input-glow animate-input text-base" required>
+          <textarea name="message" placeholder="Your Message ✍️" class="w-full p-5 bg-gray-900 text-white rounded-lg border border-gray-600 focus:outline-none input-glow animate-input text-base" rows="5" required></textarea>
+          <button type="submit" class="gradient-btn text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full w-full hover:scale-105 transition glow text-base sm:text-xl" aria-label="Send message">Send Message 🚀</button>
         </div>
       </form>
-      <div class="text-center mt-12">
-        <a href="index.html" class="gradient-btn text-white px-8 py-4 rounded-full font-semibold hover:scale-110 transition glow text-xl" aria-label="Back to home page">Back to Home 🏠</a>
+      <div class="text-center mt-8 sm:mt-12">
+        <a href="index.html" class="gradient-btn text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold hover:scale-110 transition glow text-base sm:text-xl" aria-label="Back to home page">Back to Home 🏠</a>
       </div>
     </div>
   </section>
@@ -87,29 +88,24 @@
     gsap.registerPlugin(ScrollTrigger);
     gsap.from(".animate-section-title", {
       scrollTrigger: { trigger: ".animate-section-title", start: "top 80%" },
-      x: -100,
-      opacity: 0,
-      duration: 1,
-      ease: "power3.out"
+      x: -50, opacity: 0, duration: 0.8, ease: "power3.out"
     });
     gsap.utils.toArray(".animate-section-content").forEach((element) => {
       gsap.from(element, {
         scrollTrigger: { trigger: element, start: "top 80%" },
-        opacity: 0,
-        y: 30,
-        duration: 1,
-        ease: "power3.out"
+        opacity: 0, y: 20, duration: 0.8, ease: "power3.out"
       });
     });
     gsap.utils.toArray(".animate-input").forEach((element, index) => {
       gsap.from(element, {
         scrollTrigger: { trigger: element, start: "top 80%" },
-        opacity: 0,
-        x: 30,
-        duration: 0.8,
-        delay: index * 0.2,
-        ease: "power3.out"
+        opacity: 0, x: 20, duration: 0.6, delay: index * 0.1, ease: "power3.out"
       });
+    });
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
     });
     document.querySelectorAll('a[href^="index.html"], a[href^="projects.html"], a[href^="blog.html"]').forEach(link => {
       link.addEventListener('click', (e) => {
@@ -117,7 +113,7 @@
         const href = link.getAttribute('href');
         gsap.to('body', {
           opacity: 0,
-          duration: 0.6,
+          duration: 0.4,
           onComplete: () => { window.location.href = href; }
         });
       });
