@@ -1,4 +1,4 @@
-```html
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,12 +33,16 @@
     }
     .nav-link:hover { transform: translateY(-2px); transition: transform 0.2s ease; }
     .word { display: inline-block; white-space: pre; }
+    .hamburger { z-index: 20; user-select: none; -webkit-tap-highlight-color: transparent; }
     @media (max-width: 640px) {
       h1 { font-size: 2.5rem; }
       h2 { font-size: 2rem; }
       p, a { font-size: 1rem; }
       .nav-links { display: none; }
-      .nav-links.active { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: #1E293B; padding: 1rem; }
+      .nav-links.active {
+        display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0;
+        background: #1E293B; padding: 1rem; z-index: 15; max-width: 100%; box-sizing: border-box;
+      }
       .hamburger { display: block; cursor: pointer; }
       .project-img { height: 12rem; }
       .section-divider { padding: 0.5rem 0; }
@@ -142,145 +146,152 @@
 
   <!-- JavaScript for Animations -->
   <script>
-    gsap.registerPlugin(ScrollTrigger);
+    document.addEventListener('DOMContentLoaded', () => {
+      gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
-    // Function to split text into words and wrap in spans
-    function splitTextToWords(element) {
-      const text = element.textContent;
-      const words = text.split(/\s+/).filter(word => word.length > 0);
-      element.innerHTML = words.map(word => `<span class="word">${word}</span>`).join(' ');
-      return element.querySelectorAll('.word');
-    }
+      // Function to split text into words and wrap in spans
+      function splitTextToWords(element) {
+        const text = element.textContent;
+        const words = text.split(/\s+/).filter(word => word.length > 0);
+        element.innerHTML = words.map(word => `<span class="word">${word}</span>`).join(' ');
+        return element.querySelectorAll('.word');
+      }
 
-    // Hero Section Animations
-    const heroTitle = document.querySelector('.animate-hero-title');
-    const heroContent = document.querySelector('.animate-hero-content');
-    const isMobile = window.innerWidth <= 640;
+      // Hero Section Animations
+      const heroTitle = document.querySelector('.animate-hero-title');
+      const heroContent = document.querySelector('.animate-hero-content');
+      const isMobile = window.innerWidth <= 640;
 
-    gsap.from(heroTitle, { opacity: 0, y: 50, duration: 0.8, ease: "power3.out" });
-    const heroTitleWords = splitTextToWords(heroTitle);
-    gsap.from(heroTitleWords, {
-      opacity: 0,
-      y: 20,
-      duration: isMobile ? 0.3 : 0.5,
-      stagger: isMobile ? 0.05 : 0.1,
-      ease: "power2.out",
-      delay: 0.2
-    });
-
-    gsap.from(heroContent, { opacity: 0, y: 30, duration: 0.8, delay: 0.2, ease: "power3.out" });
-    const heroContentWords = splitTextToWords(heroContent);
-    gsap.from(heroContentWords, {
-      opacity: 0,
-      y: 30,
-      duration: isMobile ? 0.2 : 0.4,
-      stagger: isMobile ? 0.03 : 0.08,
-      ease: "power2.out",
-      delay: 0.4
-    });
-
-    // About Section Animations
-    gsap.from(".animate-section-title", {
-      scrollTrigger: { trigger: ".animate-section-title", start: "top 80%" },
-      x: -50, opacity: 0, duration: 0.8, ease: "power3.out"
-    });
-    const aboutContent = document.querySelector('.animate-section-content p');
-    const aboutContentWords = splitTextToWords(aboutContent);
-    gsap.from(aboutContentWords, {
-      scrollTrigger: { trigger: aboutContent, start: "top 80%" },
-      opacity: 0,
-      x: -20,
-      duration: isMobile ? 0.2 : 0.3,
-      stagger: isMobile ? 0.03 : 0.05,
-      ease: "power2.out"
-    });
-
-    gsap.utils.toArray(".animate-skill, .animate-cert").forEach((element, index) => {
-      gsap.from(element, {
-        scrollTrigger: { trigger: element, start: "top 80%" },
-        opacity: 0,
-        x: -30,
-        duration: isMobile ? 0.3 : 0.4,
-        delay: index * (isMobile ? 0.05 : 0.1),
-        ease: "power3.out"
-      });
-    });
-
-    // Projects Section Animations
-    gsap.utils.toArray(".animate-project-card").forEach((card, index) => {
-      gsap.from(card, {
-        scrollTrigger: { trigger: card, start: "top 80%" },
+      gsap.from(heroTitle, { opacity: 0, y: 50, duration: 0.8, ease: "power3.out" });
+      const heroTitleWords = splitTextToWords(heroTitle);
+      gsap.from(heroTitleWords, {
         opacity: 0,
         y: 20,
-        duration: 0.8,
-        delay: index * 0.2,
-        ease: "power3.out"
+        duration: isMobile ? 0.3 : 0.5,
+        stagger: isMobile ? 0.05 : 0.1,
+        ease: "power2.out",
+        delay: 0.2
       });
-      const projectTitle = card.querySelector('h3');
-      const projectDesc = card.querySelector('p');
-      const projectTitleWords = splitTextToWords(projectTitle);
-      const projectDescWords = splitTextToWords(projectDesc);
-      gsap.from(projectTitleWords, {
-        scrollTrigger: { trigger: card, start: "top 80%" },
+
+      gsap.from(heroContent, { opacity: 0, y: 30, duration: 0.8, delay: 0.2, ease: "power3.out" });
+      const heroContentWords = splitTextToWords(heroContent);
+      gsap.from(heroContentWords, {
         opacity: 0,
-        scale: 0.8,
+        y: 30,
         duration: isMobile ? 0.2 : 0.4,
-        stagger: isMobile ? 0.03 : 0.05,
+        stagger: isMobile ? 0.03 : 0.08,
         ease: "power2.out",
-        delay: index * 0.2 + 0.2
+        delay: 0.4
       });
-      gsap.from(projectDescWords, {
-        scrollTrigger: { trigger: card, start: "top 80%" },
+
+      // About Section Animations
+      gsap.from(".animate-section-title", {
+        scrollTrigger: { trigger: ".animate-section-title", start: "top 80%" },
+        x: -50, opacity: 0, duration: 0.8, ease: "power3.out"
+      });
+      const aboutContent = document.querySelector('.animate-section-content p');
+      const aboutContentWords = splitTextToWords(aboutContent);
+      gsap.from(aboutContentWords, {
+        scrollTrigger: { trigger: aboutContent, start: "top 80%" },
         opacity: 0,
-        duration: isMobile ? 0.15 : 0.3,
-        stagger: isMobile ? 0.02 : 0.04,
-        ease: "power2.out",
-        delay: index * 0.2 + 0.4
+        x: -20,
+        duration: isMobile ? 0.2 : 0.3,
+        stagger: isMobile ? 0.03 : 0.05,
+        ease: "power2.out"
       });
-    });
 
-    // Contact Section Animations
-    const contactTitle = document.querySelector('.animate-section-title:last-of-type');
-    const contactContent = document.querySelector('.animate-section-content:last-of-type');
-    const contactTitleWords = splitTextToWords(contactTitle);
-    gsap.from(contactTitleWords, {
-      scrollTrigger: { trigger: contactTitle, start: "top 80%" },
-      opacity: 0,
-      y: -20,
-      duration: isMobile ? 0.3 : 0.5,
-      stagger: isMobile ? 0.05 : 0.1,
-      ease: isMobile ? "power2.out" : "bounce.out"
-    });
-    const contactContentWords = splitTextToWords(contactContent.querySelector('p'));
-    gsap.from(contactContentWords, {
-      scrollTrigger: { trigger: contactContent, start: "top 80%" },
-      opacity: 0,
-      duration: isMobile ? 0.2 : 0.4,
-      stagger: isMobile ? 0.03 : 0.08,
-      ease: "power2.out",
-      delay: 0.2
-    });
-
-    // Hamburger Menu
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
-    hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-    });
-
-    // Page Transitions
-    document.querySelectorAll('a[href^="projects.html"], a[href^="blog.html"], a[href^="contact.html"]').forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const href = link.getAttribute('href');
-        gsap.to('body', {
+      gsap.utils.toArray(".animate-skill, .animate-cert").forEach((element, index) => {
+        gsap.from(element, {
+          scrollTrigger: { trigger: element, start: "top 80%" },
           opacity: 0,
-          duration: 0.4,
-          onComplete: () => { window.location.href = href; }
+          x: -30,
+          duration: isMobile ? 0.3 : 0.4,
+          delay: index * (isMobile ? 0.05 : 0.1),
+          ease: "power3.out"
+        });
+      });
+
+      // Projects Section Animations
+      gsap.utils.toArray(".animate-project-card").forEach((card, index) => {
+        gsap.from(card, {
+          scrollTrigger: { trigger: card, start: "top 80%" },
+          opacity: 0,
+          y: 20,
+          duration: 0.8,
+          delay: index * 0.2,
+          ease: "power3.out"
+        });
+        const projectTitle = card.querySelector('h3');
+        const projectDesc = card.querySelector('p');
+        const projectTitleWords = splitTextToWords(projectTitle);
+        const projectDescWords = splitTextToWords(projectDesc);
+        gsap.from(projectTitleWords, {
+          scrollTrigger: { trigger: card, start: "top 80%" },
+          opacity: 0,
+          scale: 0.8,
+          duration: isMobile ? 0.2 : 0.4,
+          stagger: isMobile ? 0.03 : 0.05,
+          ease: "power2.out",
+          delay: index * 0.2 + 0.2
+        });
+        gsap.from(projectDescWords, {
+          scrollTrigger: { trigger: card, start: "top 80%" },
+          opacity: 0,
+          duration: isMobile ? 0.15 : 0.3,
+          stagger: isMobile ? 0.02 : 0.04,
+          ease: "power2.out",
+          delay: index * 0.2 + 0.4
+        });
+      });
+
+      // Contact Section Animations
+      const contactTitle = document.querySelector('.animate-section-title:last-of-type');
+      const contactContent = document.querySelector('.animate-section-content:last-of-type');
+      const contactTitleWords = splitTextToWords(contactTitle);
+      gsap.from(contactTitleWords, {
+        scrollTrigger: { trigger: contactTitle, start: "top 80%" },
+        opacity: 0,
+        y: -20,
+        duration: isMobile ? 0.3 : 0.5,
+        stagger: isMobile ? 0.05 : 0.1,
+        ease: isMobile ? "power2.out" : "bounce.out"
+      });
+      const contactContentWords = splitTextToWords(contactContent.querySelector('p'));
+      gsap.from(contactContentWords, {
+        scrollTrigger: { trigger: contactContent, start: "top 80%" },
+        opacity: 0,
+        duration: isMobile ? 0.2 : 0.4,
+        stagger: isMobile ? 0.03 : 0.08,
+        ease: "power2.out",
+        delay: 0.2
+      });
+
+      // Hamburger Menu
+      const hamburger = document.querySelector('.hamburger');
+      const navLinks = document.querySelector('.nav-links');
+      function toggleNav() {
+        console.log('Hamburger clicked');
+        navLinks.classList.toggle('active');
+      }
+      hamburger.addEventListener('pointerdown', toggleNav);
+      hamburger.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        toggleNav();
+      });
+
+      // Page Transitions
+      document.querySelectorAll('a[href^="projects.html"], a[href^="blog.html"], a[href^="contact.html"]').forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const href = link.getAttribute('href');
+          gsap.to('body', {
+            opacity: 0,
+            duration: 0.4,
+            onComplete: () => { window.location.href = href; }
+          });
         });
       });
     });
   </script>
 </body>
 </html>
-```
