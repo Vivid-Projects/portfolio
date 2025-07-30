@@ -68,7 +68,7 @@
         Excited to collaborate? Fill out the form below or email me at <a href="mailto:iborivivid5@gmail.com" class="text-pink-400 hover:underline">iborivivid5@gmail.com</a> 🌟
       </p>
       <form action="https://formspree.io/f/xzzvvzew" method="POST" class="max-w-lg mx-auto bg-gray-800 p-8 rounded-xl shadow-lg glow animate-section-content">
-        <input type="hidden" name="_next" value="http://localhost:5500/contact.html">
+        <input type="hidden" name="_next" value="https://vivid-projects.github.io/portfolio-website/contact.html">
         <div class="space-y-6">
           <input type="text" name="name" placeholder="Your Name 😊" class="w-full p-4 bg-gray-900 text-white rounded-lg border border-gray-600 focus:outline-none input-glow animate-input text-lg" required>
           <input type="email" name="email" placeholder="Your Email 📧" class="w-full p-4 bg-gray-900 text-white rounded-lg border border-gray-600 focus:outline-none input-glow animate-input text-lg" required>
@@ -85,7 +85,6 @@
   <!-- JavaScript for Animations -->
   <script>
     gsap.registerPlugin(ScrollTrigger);
-
     gsap.from(".animate-section-title", {
       scrollTrigger: { trigger: ".animate-section-title", start: "top 80%" },
       x: -100,
@@ -93,7 +92,6 @@
       duration: 1,
       ease: "power3.out"
     });
-
     gsap.utils.toArray(".animate-section-content").forEach((element) => {
       gsap.from(element, {
         scrollTrigger: { trigger: element, start: "top 80%" },
@@ -103,7 +101,6 @@
         ease: "power3.out"
       });
     });
-
     gsap.utils.toArray(".animate-input").forEach((element, index) => {
       gsap.from(element, {
         scrollTrigger: { trigger: element, start: "top 80%" },
@@ -114,7 +111,6 @@
         ease: "power3.out"
       });
     });
-
     document.querySelectorAll('a[href^="index.html"], a[href^="projects.html"], a[href^="blog.html"]').forEach(link => {
       link.addEventListener('click', (e) => {
         e.preventDefault();

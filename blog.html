@@ -64,14 +64,12 @@
         Dive into my insights on business intelligence, data engineering, and more. 📚
       </p>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-        <!-- Blog Post 1 -->
         <div class="bg-gray-800 p-8 rounded-xl shadow-lg hover:shadow-xl transition glow animate-blog-post">
           <h3 class="text-3xl font-semibold mb-3 text-white">Optimizing BI Dashboards 📊</h3>
           <p class="text-gray-400 text-sm mb-3">July 2025</p>
           <p class="text-gray-200 mb-6 text-lg">Best practices for designing user-friendly Tableau and Power BI dashboards.</p>
           <a href="https://your-blog-link.com/optimizing-dashboards" class="gradient-btn text-white px-6 py-3 rounded-full hover:scale-110 transition glow text-lg" aria-label="Read dashboard optimization article">Read More 📖</a>
         </div>
-        <!-- Blog Post 2 -->
         <div class="bg-gray-800 p-8 rounded-xl shadow-lg hover:shadow-xl transition glow animate-blog-post">
           <h3 class="text-3xl font-semibold mb-3 text-white">Scaling ETL with Snowflake ❄️</h3>
           <p class="text-gray-400 text-sm mb-3">June 2025</p>
@@ -88,7 +86,6 @@
   <!-- JavaScript for Animations -->
   <script>
     gsap.registerPlugin(ScrollTrigger);
-
     gsap.from(".animate-section-title", {
       scrollTrigger: { trigger: ".animate-section-title", start: "top 80%" },
       x: -100,
@@ -96,7 +93,6 @@
       duration: 1,
       ease: "power3.out"
     });
-
     gsap.utils.toArray(".animate-section-content").forEach((element) => {
       gsap.from(element, {
         scrollTrigger: { trigger: element, start: "top 80%" },
@@ -106,7 +102,6 @@
         ease: "power3.out"
       });
     });
-
     gsap.utils.toArray(".animate-blog-post").forEach((element, index) => {
       gsap.from(element, {
         scrollTrigger: { trigger: element, start: "top 80%" },
@@ -117,7 +112,6 @@
         ease: "power3.out"
       });
     });
-
     document.querySelectorAll('a[href^="index.html"], a[href^="projects.html"], a[href^="contact.html"]').forEach(link => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
