@@ -9,11 +9,17 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
+    * { box-sizing: border-box; }
     body { overflow-x: hidden; font-family: 'Inter', sans-serif; }
     .fade-in { animation: fadeIn 0.4s ease-in; }
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
+    }
+    .slide-in { animation: slideIn 0.3s ease-in; }
+    @keyframes slideIn {
+      from { transform: translateX(-100%); }
+      to { transform: translateX(0); }
     }
     .glow:hover { box-shadow: 0 0 20px rgba(59, 130, 246, 0.8); }
     .gradient-btn {
@@ -33,14 +39,21 @@
     @media (hover: none) { .project-img:hover { transform: none; filter: none; } }
     .section-divider {
       background: linear-gradient(to bottom, rgba(37, 99, 235, 0.1), rgba(244, 114, 182, 0.1));
-      padding: 1rem 0; margin: 1rem 0;
+      padding: 2rem 0; margin: 2rem 0; overflow: hidden;
     }
-    .nav-link:hover { transform: translateY(-2px); transition: transform 0.2s ease; }
+    .section-line {
+      border: none; height: 2px; background: linear-gradient(to right, #2563eb, #f472b6); margin: 2rem 0;
+    }
+    .nav-link {
+      transition: transform 0.2s ease, color 0.2s ease, background 0.2s ease; padding: 0.5rem 1rem;
+    }
+    .nav-link:hover {
+      transform: scale(1.1); color: #ffffff; background: rgba(255, 255, 255, 0.1); border-radius: 8px;
+    }
     .navbar-shadow { box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); }
     .hamburger {
       z-index: 100; user-select: none; -webkit-tap-highlight-color: transparent;
-      position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
-      padding: 0.75rem; touch-action: manipulation; pointer-events: all; transition: none;
+      position: fixed; left: 1rem; top: 1rem; padding: 0.75rem; touch-action: manipulation; pointer-events: all; transition: none;
     }
     .hamburger.active { background: rgba(244, 114, 182, 0.2); border-radius: 8px; }
     .hamburger svg { transition: none; }
@@ -48,31 +61,39 @@
     .hamburger .line2.active { opacity: 0; }
     .hamburger .line3.active { d: path('M6 18L18 6'); }
     .nav-links {
-      transition: transform 0.3s ease;
+      position: fixed; left: 0; top: 0; width: 250px; height: 100%; background: linear-gradient(to bottom, #2563eb, #f472b6);
+      padding: 3rem; z-index: 15; transition: transform 0.3s ease; display: none; flex-direction: column; gap: 1.5rem;
+      border-right: 1px solid rgba(244, 114, 182, 0.3);
     }
+    .nav-links.active {
+      display: flex; transform: translateX(0); animation: slideIn 0.3s ease-in;
+    }
+    .nav-logo {
+      text-align: center; text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+    }
+    .nav-overlay {
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.5);
+      z-index: 14; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; overflow: hidden;
+    }
+    .nav-overlay.active { opacity: 1; pointer-events: all; }
+    .container { max-width: 100%; }
+    main { margin-left: 0; transition: margin-left 0.3s ease; }
+    main.active { margin-left: 250px; }
+    section { padding-top: 5rem; }
     @media (max-width: 640px) {
       h1 { font-size: 2.5rem; }
       h2 { font-size: 2rem; }
       p, a { font-size: 1rem; }
-      .nav-links {
-        display: none; position: fixed; top: 0; right: 0; width: 75%; max-width: 300px; height: 100%;
-        background: #1E293B; padding: 2rem; z-index: 15; transform: translateX(100%);
-      }
-      .nav-links.active {
-        display: flex; flex-direction: column; transform: translateX(0);
-      }
-      .nav-overlay {
-        position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.5);
-        z-index: 14; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
-      }
-      .nav-overlay.active { opacity: 1; pointer-events: all; }
-      .hamburger { display: block; cursor: pointer; }
-      .project-img { height: 12rem; }
-      .section-divider { padding: 0.5rem 0; }
+      .nav-links { width: 75%; max-width: 300px; }
+      .project-img { max-height: 12rem; object-fit: cover; }
+      .section-divider { padding: 1rem 0; margin: 1rem 0; }
+      .section-line { margin: 1rem 0; }
     }
-    @media (min-width: 641px) {
-      .hamburger, .nav-overlay { display: none; }
-      .nav-links { display: flex !important; transform: none !important; position: static; }
+    @media (max-width: 360px) {
+      h1 { font-size: 2rem; }
+      h2 { font-size: 1.75rem; }
+      p, a { font-size: 0.875rem; }
+      .container { padding-left: 1rem; padding-right: 1rem; }
     }
     footer { background: #1E293B; padding: 2rem 0; }
     .footer-link { transition: color 0.2s ease; }
@@ -81,100 +102,104 @@
 </head>
 <body class="font-sans bg-gray-800 text-white fade-in">
   <!-- Navigation -->
-  <nav class="fixed top-0 w-full bg-gray-800 bg-opacity-95 p-4 shadow-lg z-10">
-    <div class="container mx-auto flex justify-between items-center">
-      <h1 class="text-2xl sm:text-3xl font-extrabold text-blue-400">Vivid's Portfolio 📈</h1>
-      <div class="hamburger">
-        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path class="line1" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16" />
-          <path class="line2" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 12h16" />
-          <path class="line3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 18h7" />
-        </svg>
-      </div>
-      <div class="nav-links flex space-x-2 sm:space-x-6">
-        <a href="index.html" class="text-base sm:text-lg hover:text-pink-400 transition nav-link">Home 🏠</a>
-        <a href="projects.html" class="text-base sm:text-lg hover:text-pink-400 transition nav-link">Projects 📊</a>
-        <a href="blog.html" class="text-base sm:text-lg hover:text-pink-400 transition nav-link">Blog 📝</a>
-        <a href="contact.html" class="text-base sm:text-lg hover:text-pink-400 transition nav-link">Contact 📧</a>
-      </div>
-      <div class="nav-overlay"></div>
+  <nav class="navbar-shadow">
+    <div class="hamburger">
+      <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path class="line1" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16" />
+        <path class="line2" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 12h16" />
+        <path class="line3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 18h7" />
+      </svg>
     </div>
+    <div class="nav-links">
+      <h1 class="text-2xl font-extrabold text-white nav-logo mb-6">Vivid's Portfolio 📈</h1>
+      <a href="index.html" class="text-base sm:text-lg text-white hover:text-white transition nav-link">Home 🏠</a>
+      <a href="projects.html" class="text-base sm:text-lg text-white hover:text-white transition nav-link">Projects 📊</a>
+      <a href="blog.html" class="text-base sm:text-lg text-white hover:text-white transition nav-link">Blog 📝</a>
+      <a href="contact.html" class="text-base sm:text-lg text-white hover:text-white transition nav-link">Contact 📧</a>
+    </div>
+    <div class="nav-overlay"></div>
   </nav>
 
-  <!-- Hero Section -->
-  <section class="min-h-screen flex items-center bg-gray-800 bg-section section-divider hero-section" style="background-image: url('https://images.unsplash.com/photo-1551288049-b1f3a0c3f055?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');">
-    <div class="section-overlay"></div>
-    <div class="container mx-auto px-4 sm:px-6 text-center relative z-10">
-      <h1 class="text-3xl sm:text-5xl md:text-7xl font-extrabold text-blue-400 mb-6">Vivid's Portfolio 🌟</h1>
-      <p class="text-base sm:text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto mb-10">
-        Transforming data into insights with stunning BI dashboards and robust pipelines. Dive into my work! 🚀
-      </p>
-      <a href="projects.html" class="gradient-btn text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold transition glow text-base sm:text-xl" aria-label="Explore projects">Explore My Work 📊</a>
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <section class="py-12 sm:py-24 bg-gray-800 section-divider about-section">
-    <div class="section-overlay"></div>
-    <div class="container mx-auto px-4 sm:px-6 relative z-10">
-      <h2 class="text-3xl sm:text-5xl font-extrabold text-center mb-10 text-blue-400">About Me 🌟</h2>
-      <p class="text-base sm:text-xl text-gray-200 max-w-3xl mx-auto text-center mb-10">
-        I'm a BI Developer and Data Engineer passionate about crafting interactive dashboards with Tableau and Power BI, and building scalable ETL pipelines with Spark and Python.
-      </p>
-      <div class="flex justify-center space-x-4 sm:space-x-6 flex-wrap">
-        <span class="bg-blue-400 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full glow text-base sm:text-lg">Tableau 📊</span>
-        <span class="bg-blue-400 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full glow text-base sm:text-lg">Power BI 📈</span>
-        <span class="bg-blue-400 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full glow text-base sm:text-lg">Spark 🔥</span>
-        <span class="bg-blue-400 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full glow text-base sm:text-lg">Python 🐍</span>
-        <span class="bg-blue-400 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full glow text-base sm:text-lg">SQL 🗃️</span>
+  <!-- Main Content -->
+  <main>
+    <!-- Hero Section -->
+    <section class="min-h-[80vh] flex items-center bg-gray-800 bg-section section-divider hero-section overflow-hidden" style="background-image: url('https://images.unsplash.com/photo-1551288049-b1f3a0c3f055?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');">
+      <div class="section-overlay"></div>
+      <div class="container mx-auto px-4 sm:px-6 text-center relative z-10 py-12 sm:py-24">
+        <h1 class="text-3xl sm:text-5xl md:text-7xl font-extrabold text-blue-400 mb-6">Vivid's Portfolio 🌟</h1>
+        <p class="text-base sm:text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto mb-10">
+          Transforming data into insights with stunning BI dashboards and robust pipelines. Dive into my work! 🚀
+        </p>
+        <a href="projects.html" class="gradient-btn text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold transition glow text-base sm:text-xl" aria-label="Explore projects">Explore My Work 📊</a>
       </div>
-      <div class="mt-10 text-center">
-        <h3 class="text-2xl sm:text-3xl font-semibold text-blue-400 mb-6">Certifications 🎓</h3>
+    </section>
+    <hr class="section-line">
+
+    <!-- About Section -->
+    <section class="bg-gray-800 section-divider">
+      <div class="section-overlay"></div>
+      <div class="container mx-auto px-4 sm:px-6 relative z-10 py-12 sm:py-24">
+        <h2 class="text-3xl sm:text-5xl font-extrabold text-center mb-10 text-blue-400">About Me 🌟</h2>
+        <p class="text-base sm:text-xl text-gray-200 max-w-3xl mx-auto text-center mb-10">
+          I'm a BI Developer and Data Engineer passionate about crafting interactive dashboards with Tableau and Power BI, and building scalable ETL pipelines with Spark and Python.
+        </p>
         <div class="flex justify-center space-x-4 sm:space-x-6 flex-wrap">
-          <span class="bg-blue-400 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full glow text-base sm:text-lg">Microsoft Fabric DP-700 🏅</span>
-          <span class="bg-blue-400 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full glow text-base sm:text-lg">Microsoft Power BI PL-300 🏅</span>
-          <span class="bg-blue-400 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full glow text-base sm:text-lg">Google Analytics 📊</span>
+          <span class="bg-blue-400 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full glow text-base sm:text-lg">Tableau 📊</span>
+          <span class="bg-blue-400 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full glow text-base sm:text-lg">Power BI 📈</span>
+          <span class="bg-blue-400 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full glow text-base sm:text-lg">Spark 🔥</span>
+          <span class="bg-blue-400 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full glow text-base sm:text-lg">Python 🐍</span>
+          <span class="bg-blue-400 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full glow text-base sm:text-lg">SQL 🗃️</span>
+        </div>
+        <div class="mt-10 text-center">
+          <h3 class="text-2xl sm:text-3xl font-semibold text-blue-400 mb-6">Certifications 🎓</h3>
+          <div class="flex justify-center space-x-4 sm:space-x-6 flex-wrap">
+            <span class="bg-blue-400 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full glow text-base sm:text-lg">Microsoft Fabric DP-700 🏅</span>
+            <span class="bg-blue-400 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full glow text-base sm:text-lg">Microsoft Power BI PL-300 🏅</span>
+            <span class="bg-blue-400 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full glow text-base sm:text-lg">Google Analytics 📊</span>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+    <hr class="section-line">
 
-  <!-- Projects Section -->
-  <section class="py-12 sm:py-24 bg-gray-800 section-divider projects-section">
-    <div class="section-overlay"></div>
-    <div class="container mx-auto px-4 sm:px-6 relative z-10">
-      <h2 class="text-3xl sm:text-5xl font-extrabold text-center mb-10 text-blue-400">Featured Projects 📊</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-10">
-        <div class="bg-gray-800 p-6 sm:p-8 rounded-xl shadow-lg hover:shadow-xl transition glow">
-          <img src="https://images.unsplash.com/photo-1614027164847-1b28cfe1df60?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Sales Performance Dashboard" class="w-full h-48 sm:h-64 object-cover rounded-lg mb-6 project-img">
-          <h3 class="text-2xl sm:text-3xl font-semibold mb-3 text-white">Sales Performance Dashboard 📊</h3>
-          <p class="text-base sm:text-lg text-gray-200 mb-6">A Tableau dashboard visualizing sales KPIs with real-time insights.</p>
-          <a href="https://github.com/Vivid-Projects/sales-dashboard" class="gradient-btn text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full transition glow text-base sm:text-lg" aria-label="View Sales Dashboard on GitHub">View on GitHub 🚀</a>
+    <!-- Projects Section -->
+    <section class="bg-gray-800 section-divider">
+      <div class="section-overlay"></div>
+      <div class="container mx-auto px-4 sm:px-6 relative z-10 py-12 sm:py-24">
+        <h2 class="text-3xl sm:text-5xl font-extrabold text-center mb-10 text-blue-400">Featured Projects 📊</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-10">
+          <div class="bg-gray-800 p-6 sm:p-8 rounded-xl shadow-lg hover:shadow-xl transition glow">
+            <img src="https://images.unsplash.com/photo-1614027164847-1b28cfe1df60?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Sales Performance Dashboard" class="w-full h-48 sm:h-64 object-cover rounded-lg mb-6 project-img">
+            <h3 class="text-2xl sm:text-3xl font-semibold mb-3 text-white">Sales Performance Dashboard 📊</h3>
+            <p class="text-base sm:text-lg text-gray-200 mb-6">A Tableau dashboard visualizing sales KPIs with real-time insights.</p>
+            <a href="https://github.com/Vivid-Projects/sales-dashboard" class="gradient-btn text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full transition glow text-base sm:text-lg" aria-label="View Sales Dashboard on GitHub">View on GitHub 🚀</a>
+          </div>
+          <div class="bg-gray-800 p-6 sm:p-8 rounded-xl shadow-lg hover:shadow-xl transition glow">
+            <img src="https://images.unsplash.com/photo-1614027164847-1b28cfe1df60?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="ETL Data Pipeline" class="w-full h-48 sm:h-64 object-cover rounded-lg mb-6 project-img">
+            <h3 class="text-2xl sm:text-3xl font-semibold mb-3 text-white">ETL Data Pipeline 🛠️</h3>
+            <p class="text-base sm:text-lg text-gray-200 mb-6">A Snowflake-based pipeline for processing large-scale datasets.</p>
+            <a href="https://github.com/Vivid-Projects/etl-pipeline" class="gradient-btn text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full transition glow text-base sm:text-lg" aria-label="View ETL Pipeline on GitHub">View on GitHub 🚀</a>
+          </div>
         </div>
-        <div class="bg-gray-800 p-6 sm:p-8 rounded-xl shadow-lg hover:shadow-xl transition glow">
-          <img src="https://images.unsplash.com/photo-1614027164847-1b28cfe1df60?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="ETL Data Pipeline" class="w-full h-48 sm:h-64 object-cover rounded-lg mb-6 project-img">
-          <h3 class="text-2xl sm:text-3xl font-semibold mb-3 text-white">ETL Data Pipeline 🛠️</h3>
-          <p class="text-base sm:text-lg text-gray-200 mb-6">A Snowflake-based pipeline for processing large-scale datasets.</p>
-          <a href="https://github.com/Vivid-Projects/etl-pipeline" class="gradient-btn text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full transition glow text-base sm:text-lg" aria-label="View ETL Pipeline on GitHub">View on GitHub 🚀</a>
+        <div class="text-center mt-8 sm:mt-12">
+          <a href="projects.html" class="gradient-btn text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold transition glow text-base sm:text-xl" aria-label="View all projects">View All Projects 📊</a>
         </div>
       </div>
-      <div class="text-center mt-8 sm:mt-12">
-        <a href="projects.html" class="gradient-btn text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold transition glow text-base sm:text-xl" aria-label="View all projects">View All Projects 📊</a>
-      </div>
-    </div>
-  </section>
+    </section>
+    <hr class="section-line">
 
-  <!-- Contact Section -->
-  <section class="py-12 sm:py-24 bg-gray-800 section-divider contact-section">
-    <div class="section-overlay"></div>
-    <div class="container mx-auto px-4 sm:px-6 text-center relative z-10">
-      <h2 class="text-3xl sm:text-5xl font-extrabold text-center mb-10 text-blue-400">Let's Connect 📧</h2>
-      <p class="text-base sm:text-xl text-gray-200 max-w-3xl mx-auto mb-10">
-        Interested in collaborating? Reach out via the form or email me at <a href="mailto:iborivivid5@gmail.com" class="text-pink-400 hover:underline">iborivivid5@gmail.com</a> 🌟
-      </p>
-      <a href="contact.html" class="gradient-btn text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold transition glow text-base sm:text-xl" aria-label="Go to contact form">Contact Form 📝</a>
-    </div>
-  </section>
+    <!-- Contact Section -->
+    <section class="bg-gray-800 section-divider">
+      <div class="section-overlay"></div>
+      <div class="container mx-auto px-4 sm:px-6 text-center relative z-10 py-12 sm:py-24">
+        <h2 class="text-3xl sm:text-5xl font-extrabold text-center mb-10 text-blue-400">Let's Connect 📧</h2>
+        <p class="text-base sm:text-xl text-gray-200 max-w-3xl mx-auto mb-10">
+          Interested in collaborating? Reach out via the form or email me at <a href="mailto:iborivivid5@gmail.com" class="text-pink-400 hover:underline">iborivivid5@gmail.com</a> 🌟
+        </p>
+        <a href="contact.html" class="gradient-btn text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold transition glow text-base sm:text-xl" aria-label="Go to contact form">Contact Form 📝</a>
+      </div>
+    </section>
+  </main>
 
   <!-- Footer -->
   <footer class="bg-gray-800 text-gray-200 text-center">
@@ -195,21 +220,23 @@
         const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');
         const navOverlay = document.querySelector('.nav-overlay');
+        const main = document.querySelector('main');
         const line1 = document.querySelector('.hamburger .line1');
         const line2 = document.querySelector('.hamburger .line2');
         const line3 = document.querySelector('.hamburger .line3');
         function toggleNav(e) {
           e.preventDefault();
           console.log('Hamburger or overlay clicked', { width: window.innerWidth, time: new Date().toISOString() });
-          if (navLinks && navOverlay && line1 && line2 && line3) {
+          if (navLinks && navOverlay && main && line1 && line2 && line3) {
             const isActive = navLinks.classList.toggle('active');
             navOverlay.classList.toggle('active');
             hamburger.classList.toggle('active');
+            main.classList.toggle('active');
             line1.classList.toggle('active');
             line2.classList.toggle('active');
             line3.classList.toggle('active');
           } else {
-            console.warn('Nav links, overlay, or SVG lines not found');
+            console.warn('Nav links, overlay, main, or SVG lines not found');
           }
         }
         if (hamburger && navLinks && navOverlay) {
@@ -221,7 +248,7 @@
       }
       setupHamburger();
 
-      // Page Transitions (Fade Out Fallback)
+      // Page Transitions (Fade Out)
       document.querySelectorAll('a[href^="projects.html"], a[href^="blog.html"], a[href^="contact.html"]').forEach(link => {
         link.addEventListener('click', (e) => {
           e.preventDefault();
